@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        const com = ["ROCK", "PAPER", "SCISSORS"];
+        let finished = false;
+
+        let pwin = 0;
+        let cwin = 0;
+        function getComputerChoice(){
+            return com[Math.floor(Math.random() * 2)];//determins what the computer will choose
+        }
+         function getHumanChoice(){
+            return prompt ("rock paper scissors");
+         }
+        while(finished === false){
+            let comp = getComputerChoice();
+            let player = getHumanChoice();
+            if(player.toUpperCase()=== comp){//determins if it is a tie
+                console.log("tie");
+            }else if(player.toUpperCase()=== com[0] && comp === com[2]  ||
+            player.toUpperCase()=== com[1] && comp === com[0] ||
+            player.toUpperCase()=== com[2] && comp === com[1]){//determins if the player wins
+                pwin++;
+                
+            }else if(player.toUpperCase()=== com[2] && comp === com[0]  ||
+            player.toUpperCase()=== com[0] && comp === com[1] ||
+            player.toUpperCase()=== com[1] && comp === com[2] ){//determins if the computer wins
+                cwin++;
+            }
+            console.log("plater "+pwin);
+            console.log("computer "+cwin);
+
+            if (pwin == 3){
+                finished = true;
+                console.log("player wins ");
+
+
+            }else if (cwin == 3){
+                finished = true;
+                console.log("computer wins");
+
+
+            }
+
+
+        }
+
+    </script>
+    al;sdfjfjf
+</body>
+</html>
