@@ -6,52 +6,73 @@
     <title>Document</title>
 </head>
 <body>
+ <div id ="pscore">player score 0 </div>
+ <div id ="cscore">computer score 0 </div>
+
+
+<button id = "rbtn">rock</button>
+<button id = "pbtn">paper</button>
+<button id = "sbtn">scissors</button>
+
+<p> </p>
+
+
+
     <script >
         const com = ["ROCK", "PAPER", "SCISSORS"];
         let finished = false;
 
         let pwin = 0;
         let cwin = 0;
+        
+        function playRound(selection){
+            console.log(selection);
+
+                let comp = getComputerChoice();
+                let player = selection;
+                const para = document.querySelector("p");
+                const PSCORE = document.getElementById('pscore');
+                const CSCORE = document.getElementById('cscore');
+
+                
+
+                if(player.toUpperCase()=== comp){//determins if it is a tie
+                    para.textContent = "tie";
+                }else if(player.toUpperCase()=== com[0] && comp === com[2]  ||
+                player.toUpperCase()=== com[1] && comp === com[0] ||
+                player.toUpperCase()=== com[2] && comp === com[1]){//determins if the player wins
+                    para.textContent = "player wins";
+                    pwin++;
+                    PSCORE.innerHTML = "player score "+ pwin;
+                    
+                    
+                }else if(player.toUpperCase()=== com[2] && comp === com[0]  ||
+                player.toUpperCase()=== com[0] && comp === com[1] ||
+                player.toUpperCase()=== com[1] && comp === com[2] ){//determins if the computer wins
+                    para.textContent = "computer wins";
+                    cwin++;
+                    CSCORE.innerHTML = "computer score " +cwin;
+                }
+                console.log("plater "+pwin);
+                console.log("computer "+cwin);
+
+           
+        }
         function getComputerChoice(){
             return com[Math.floor(Math.random() * 2)];//determins what the computer will choose
         }
          function getHumanChoice(){
             return prompt ("rock paper scissors");
          }
-        while(finished === false){
-            let comp = getComputerChoice();
-            let player = getHumanChoice();
-            if(player.toUpperCase()=== comp){//determins if it is a tie
-                console.log("tie");
-            }else if(player.toUpperCase()=== com[0] && comp === com[2]  ||
-            player.toUpperCase()=== com[1] && comp === com[0] ||
-            player.toUpperCase()=== com[2] && comp === com[1]){//determins if the player wins
-                pwin++;
-                
-            }else if(player.toUpperCase()=== com[2] && comp === com[0]  ||
-            player.toUpperCase()=== com[0] && comp === com[1] ||
-            player.toUpperCase()=== com[1] && comp === com[2] ){//determins if the computer wins
-                cwin++;
-            }
-            console.log("plater "+pwin);
-            console.log("computer "+cwin);
+        
+        let rbtn = document.querySelector('#rbtn');
+        let pbtn = document.querySelector('#pbtn');
+        let sbtn = document.querySelector('#sbtn');
 
-            if (pwin == 3){
-                finished = true;
-                console.log("player wins ");
-
-
-            }else if (cwin == 3){
-                finished = true;
-                console.log("computer wins");
-
-
-            }
-
-
-        }
-
+        rbtn.addEventListener('click', function(){playRound("ROCK")})
+        pbtn.addEventListener('click', function(){playRound("PAPER")})
+        sbtn.addEventListener('click', function(){playRound("SCISSORS")})
     </script>
-    al;sdfjfjf
+    
 </body>
 </html>
